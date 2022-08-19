@@ -7,12 +7,15 @@ class TasksScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.lightBlueAccent,
-        child: const Icon(Icons.add),
-        onPressed: () {
-          showModalBottomSheet(context: context, builder: (context) => AddTaskScreen());
-        },
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 550.0, right: 20.0),
+        child: FloatingActionButton(
+          backgroundColor: Colors.white,
+          child: const Icon(Icons.add, color: Colors.lightBlueAccent,),
+          onPressed: () {
+            showModalBottomSheet(context: context, builder: (context) => AddTaskScreen());
+          },
+        ),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,7 +51,7 @@ class TasksScreen extends StatelessWidget {
           Expanded(
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              margin: const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
+              margin: const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 10.0),
               decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.all(Radius.circular(20.0)),

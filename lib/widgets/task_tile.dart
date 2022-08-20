@@ -1,20 +1,43 @@
 import 'package:flutter/material.dart';
 
 class TaskTile extends StatelessWidget {
-  const TaskTile({
-    Key? key,
-  }) : super(key: key);
+  final bool isChecked;
+  final String taskTitle;
+  final checkboxCallback;
+
+  TaskTile({required this.isChecked, required this.taskTitle, required this.checkboxCallback});
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      contentPadding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 0.0),
-      title: const Text('Finish Todo app', style: TextStyle(fontSize: 16.0, )),
-      //Onchagned
+      contentPadding:
+          const EdgeInsets.symmetric(horizontal: 5.0, vertical: 0.0),
+      title: Text(
+        taskTitle,
+        style: TextStyle(
+            fontSize: 16.0,
+            decoration: isChecked ? TextDecoration.lineThrough : null),
+      ),
       trailing: Checkbox(
-        value: false,
-        onChanged: (bool? value) {},
+        activeColor: Colors.lightBlueAccent,
+        value: isChecked,
+        onChanged: checkboxCallback,
+        // onChanged: toggleCheckboxState,
       ),
     );
   }
 }
+
+
+// (checkboxState) {
+//   setState(() {
+//     isChecked = checkboxState;
+//   });
+// }
+
+  // void checkboxCallback(checkboxState) {
+  //   setState(() {
+  //     isChecked = checkboxState;
+  //   });
+  // }
+

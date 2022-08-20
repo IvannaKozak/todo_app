@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/models/task.dart';
+import 'package:todo_app/widgets/task_tile.dart';
+import 'package:todo_app/screens/tasks_screen.dart';
+
 
 class AddTaskScreen extends StatelessWidget {
+
+  final Function addTaskCallback;
+  AddTaskScreen(this.addTaskCallback);
+
   @override
   Widget build(BuildContext context) {
+    String newTaskTitle = 'New task';
     return Container(
       color: Color(0xFF1d5a75),
       child: Container(
@@ -13,31 +22,33 @@ class AddTaskScreen extends StatelessWidget {
             topRight: Radius.circular(20.0),
           ),
         ),
-        padding: EdgeInsets.only(top: 30.0, left: 40.0, right: 40.0, bottom: 20.0),
+        padding:
+            const EdgeInsets.only(top: 30.0, left: 40.0, right: 40.0, bottom: 20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            const TextField(
+            TextField(
               autofocus: true,
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 20.0),
-              decoration: InputDecoration(
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.lightBlueAccent),
-                ),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.lightBlueAccent),
-                ),
-              ),
+              onChanged: (newText) {
+                newTaskTitle = newText;
+              },
+              
             ),
-            SizedBox(height: 20.0,),
+            const SizedBox(
+              height: 20.0,
+            ),
             FlatButton(
-              padding: EdgeInsets.symmetric(vertical: 10.0),
+              padding: const EdgeInsets.symmetric(vertical: 10.0),
               color: Colors.lightBlueAccent,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15.0),
               ),
-              onPressed: () {},
+              onPressed: () {
+                addTaskCallback(newTaskTitle);
+                Navigator.pop(context);
+              },
               child: const Text(
                 'Add task',
                 style: TextStyle(
@@ -48,7 +59,6 @@ class AddTaskScreen extends StatelessWidget {
             ),
           ],
         ),
-
       ),
     );
   }

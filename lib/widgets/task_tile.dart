@@ -24,22 +24,8 @@ class TaskTile extends StatelessWidget {
         activeColor: Colors.lightBlueAccent,
         value: isChecked,
         onChanged: checkboxCallback,
-        // onChanged: toggleCheckboxState,
       ),
     );
   }
 }
-
-
-// (checkboxState) {
-//   setState(() {
-//     isChecked = checkboxState;
-//   });
-// }
-
-  // void checkboxCallback(checkboxState) {
-  //   setState(() {
-  //     isChecked = checkboxState;
-  //   });
-  // }
 
